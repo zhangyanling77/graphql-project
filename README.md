@@ -101,7 +101,6 @@ const Product = new GraphQLObjectType({
       category: {
         type: Category,
         resolve(parent){
-          // return categories.find(item => item.id === parent.category)
           return CategoryModel.findById(parent.category)
         }
       }
@@ -235,3 +234,25 @@ module.exports = {
 
 ## Client端开发
 
+* 使用cra生成项目结构，安装完需要的依赖，删除src下所有的文件
+
+* 创建src/index.tsx
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks'
+import App from './App'
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql'
+})
+
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('root')
+)
+
+```
