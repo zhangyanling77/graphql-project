@@ -4,10 +4,10 @@
 ## 项目使用技术栈
 ```javascript
 server: 
-koa + graphql + mongodb
+koa + graphql + mongooes
 
 client:
-react hooks + ts
+react hooks + ts + apollo-boots + @apollo/react-hooks + graphql
 ```
 
 ## 安装项目依赖
@@ -226,3 +226,6 @@ module.exports = {
   ProductModel
 }
 ```
+
+## Client端开发
+
