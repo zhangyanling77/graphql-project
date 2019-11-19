@@ -14,10 +14,15 @@ react hooks + ts
 
 ```javascript
 server: 
+mkdir server
+cd server
+npm init -y
 yarn add koa koa-router koa2-cors graphql koa-graphql mongoose
 
 client:
 npx create-react-app client --typescript
+cd client
+yarn add apollo-boost @apollo/react-hooks graphql
 ```
 ## Server端开发
 * 创建server.js
