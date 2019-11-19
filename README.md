@@ -17,7 +17,7 @@ server:
 mkdir server
 cd server
 npm init -y
-yarn add koa koa-router koa2-cors graphql koa-graphql mongoose
+yarn add koa koa-router koa2-cors graphql koa-graphql koa-mount mongoose
 
 client:
 npx create-react-app client --typescript
