@@ -66,7 +66,7 @@ const RootQuery = new GraphQLObjectType({
       type: Category,
       args: {
         id: {
-          type: GraphQLNonNull(GraphQLString)
+          type: new GraphQLNonNull(GraphQLString)
         }
       },
       resolve(parent, args){
@@ -84,7 +84,7 @@ const RootQuery = new GraphQLObjectType({
       type: Product,
       args: {
         id: {
-          type: GraphQLString
+          type: new GraphQLNonNull(GraphQLString)
         }
       },
       resolve(parent, args){
