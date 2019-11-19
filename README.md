@@ -18,7 +18,6 @@ yarn add koa koa-router koa2-cors graphql koa-graphql mongoose
 
 client:
 npx create-react-app client --typescript
-yarn add antd less less-loader
 ```
 ## Server端开发
 * 创建server.js
@@ -70,7 +69,6 @@ const Category = new GraphQLObjectType({
       products: {
         type: new GraphQLList(Product),
         resolve(parent){
-          // return products.filter(item => item.category === parent.id)
           return ProductModel.find({ category: parent.id })
         }
       }
@@ -175,7 +173,7 @@ module.exports = new GraphQLSchema({
 })
 ```
 * 创建model.js 操作数据库
-首先连接本地数据库
+首先启动数据库服务，并连接到本地数据库
 ```bash
 cd C:\Program Files\MongoDB\Server\4.2\bin
 mongod --dbpath=./data
@@ -186,7 +184,6 @@ let mongoose = require('mongoose')
 let ObjectId = mongoose.Schema.Types.ObjectId
 
 const Schema = mongoose.Schema
-
 const conn = mongoose.createConnection('mongodb://localhost/graphql')
 
 conn.on('open', () => {
@@ -213,7 +210,6 @@ const ProductSchema = new Schema({
 })
 
 const ProductModel = conn.model('Product', ProductSchema)
-
 
 module.exports = {
   CategoryModel,
