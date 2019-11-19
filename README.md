@@ -45,6 +45,11 @@ npx create-react-app client --typescript
     console.log('server started on 4000')
   })
 ```
+* 启动服务端
+```bash
+node server.js
+```
+访问 http://localhost:4000/graphql 可以看到graphiql可视化操作界面
 
 * 创建schema.js
 ```javascript
