@@ -7,7 +7,13 @@ server:
 koa + graphql + mongooes
 
 client:
-react hooks + ts + apollo-boots + @apollo/react-hooks + graphql
+react hooks + ts + apollo-boost + @apollo/react-hooks + graphql
+```
+```javascript
+模块名	含义
+apollo-boost	Package containing everything you need to set up Apollo Client
+@apollo/react-hooks	React hooks based view layer integration
+graphql	Also parses your GraphQL queries
 ```
 
 ## 安装项目依赖
