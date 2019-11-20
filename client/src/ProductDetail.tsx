@@ -19,7 +19,7 @@ function ProductLDetail(props: Props){
         此分类下的所有产品：
         <ul className='list-group'>
           {
-            product.category!.products.map((item: Product) => (
+            product.category!.products!.map((item: Product) => (
               <li className="list-group-item">{item.name}</li>
             ))
           }
