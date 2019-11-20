@@ -7,7 +7,7 @@ interface Props {
 }
 // 产品列表
 function ProductList(props: Props){
-  
+  if(!props.products) return null
   return (
     <table className="table table-striped">
       <caption className="text-center">产品列表</caption>
