@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import 'bootstrap/dist/css/bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 import AddProduct from './AddProduct';
 import ProductList from './ProductList';
 import ProductDetail from './ProductDetail'
