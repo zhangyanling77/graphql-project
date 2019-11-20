@@ -2,7 +2,7 @@ const Koa = require('koa')
 const mount = require('koa-mount')
 const graphqlHTTP = require('koa-graphql')
 const cors = require('koa2-cors') // 解决跨域
-const myGraphQLSchema = require('./schema.js')
+const myGraphQLSchema = require('./schema')
 
 const app = new Koa()
 
