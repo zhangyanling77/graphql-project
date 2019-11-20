@@ -38,7 +38,7 @@ function AddProduct(props: Props){
           <option value="">请选择分类</option>
           {
             props.categories.map((item: Category) => (
-              <option value={item.id}>{item.name}</option>
+              <option key={item.id} value={item.id}>{item.name}</option>
             ))
           }
         </select>
