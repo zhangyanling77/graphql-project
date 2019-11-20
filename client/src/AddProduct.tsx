@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Category, Product } from './types';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_PRODUTC, GET_PRODUCTS } from './query';
+import { ADD_PRODUCT, GET_PRODUCTS } from './query';
 
 interface Props {
   categories: Array<Category>
@@ -9,7 +9,7 @@ interface Props {
 // 添加产品
 function AddProduct(props: Props){
   let [product, setProduct] = useState<Product>({ name:'', categoryId: '' })
-  let [addProduct] = useMutation(ADD_PRODUTC)
+  let [addProduct] = useMutation(ADD_PRODUCT)
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     // 获取表单的值
