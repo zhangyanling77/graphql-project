@@ -1,5 +1,5 @@
 const graphql = require('graphql')
-const { CategoryModel, ProductModel } = require('./model.js')
+const { CategoryModel, ProductModel } = require('./model')
 
 const {
   GraphQLObjectType,
@@ -18,15 +18,15 @@ const Category = new GraphQLObjectType({
       name: { type: GraphQLString },
       products: {
         type: new GraphQLList(Product),
-        resolve(parent){
-          return ProductModel.find({ category: parent.id })
+        async resolve(parent){
+          let result = await ProductModel.find({ category: parent.id })
+          return result
         }
       }
     }
   )
 })
 
-// 商品查询
 const Product = new GraphQLObjectType({
   name: 'Product',
   fields: () => (
@@ -35,8 +35,9 @@ const Product = new GraphQLObjectType({
       name: { type: GraphQLString },
       category: {
         type: Category,
-        resolve(parent){
-          return CategoryModel.findById(parent.category)
+        async resolve(parent){
+          let result = await CategoryModel.findById(parent.category)
+          return result
         }
       }
     }
@@ -50,37 +51,37 @@ const RootQuery = new GraphQLObjectType({
     getCategory: { // 子查询
       type: Category,
       args: {
-        id: {
-          type: new GraphQLNonNull(GraphQLString)
-        }
+        id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve(parent, args){
-        return CategoryModel.findById(args.id)
+      async resolve(parent, args){
+        let result = await CategoryModel.findById(args.id)
+        return result
       }
     },
     getCategories: {
       type: new GraphQLList(Category),
       args: {},
-      resolve(parent, args){
-        return CategoryModel.find()
+      async resolve(parent, args){
+        let result = await CategoryModel.find()
+        return result
       }
     },
     getProduct: {
       type: Product,
       args: {
-        id: {
-          type: new GraphQLNonNull(GraphQLString)
-        }
+        id: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve(parent, args){
-        return ProductModel.findById(args.id)
+      async resolve(parent, args){
+        let result = await ProductModel.findById(args.id)
+        return result 
       }
     },
     getProducts: {
       type: new GraphQLList(Product),
       args: {},
-      resolv(parent, args){
-        return ProductModel.find()
+      async resolv(parent, args){
+        let result = await ProductModel.find()
+        return result 
       }
     }
   }
@@ -92,26 +93,22 @@ const RootMutation = new GraphQLObjectType({
     addCategory: {
       type: Category,
       args: {
-        name: {
-          type: new GraphQLNonNull(GraphQLString)
-        }
+        name: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve(parent, args){
-        return CategoryModel.create(args)
+      async resolve(parent, args){
+        let result = await CategoryModel.create(args)
+        return result  
       }
     },
     addProduct: {
       type: Product,
       args: {
-        name: {
-          type: new GraphQLNonNull(GraphQLString)
-        },
-        category: {
-          type: new GraphQLNonNull(GraphQLString)
-        }
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        category: { type: new GraphQLNonNull(GraphQLString) }
       },
-      resolve(parent, args){
-        return ProductModel.create(args)
+      async resolve(parent, args){
+        let result = await ProductModel.create(args)
+        return result 
       }
     }
   }
