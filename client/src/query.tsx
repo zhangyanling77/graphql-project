@@ -3,13 +3,13 @@ import { gql } from 'apollo-boost'
 export const GET_PRODUCTS = gql`
   query{
     getProducts{
-      id,
-      name,
+      id
+      name
       category{
-        id,
-        name,
+        id
+        name
         products{
-          id,
+          id
           name
         }
       }
@@ -21,21 +21,21 @@ export const GET_PRODUCTS = gql`
 export const CATEGORIES_PRODUCTS = gql`
   query{
     getCategories{
-      id,
-      name,
+      id
+      name
       products{
-        id,
+        id
         name
       }
     }
     getProducts{
       id,
-      name,
+      name
       category{
-        id,
-        name,
+        id
+        name
         products{
-          id,
+          id
           name
         }
       }
@@ -44,13 +44,13 @@ export const CATEGORIES_PRODUCTS = gql`
 `;
 
 // 添加产品
-export const ADD_PRODUTC = gql`
+export const ADD_PRODUCT = gql`
   mutation($name:String!, $categoryId:String!){
-    addProduct(name: $name, categoryId: $categoryId){
-      id,
-      name,
+    addProduct(name: $name, category: $categoryId){
+      id
+      name
       category{
-        id,
+        id
         name
       }
     }
