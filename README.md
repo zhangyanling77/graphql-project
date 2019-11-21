@@ -30,6 +30,7 @@ npx create-react-app client --typescript
 cd client
 yarn add apollo-boost @apollo/react-hooks graphql
 ```
+
 ## Server端开发
 * 创建server.js
 ```javascript
@@ -233,6 +234,10 @@ module.exports = {
 ```
 
 ## Client端开发
+* 启动项目 
+```bash
+yarn start
+```
 
 * 使用cra生成项目结构，安装完需要的依赖，删除src下所有的文件
 
