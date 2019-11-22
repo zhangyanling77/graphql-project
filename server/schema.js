@@ -79,7 +79,7 @@ const RootQuery = new GraphQLObjectType({
     getProducts: {
       type: new GraphQLList(Product),
       args: {},
-      async resolv(parent, args){
+      async resolve(parent, args){
         let result = await ProductModel.find()
         return result 
       }
