@@ -15,6 +15,7 @@ apollo-boost	Package containing everything you need to set up Apollo Client
 @apollo/react-hooks	React hooks based view layer integration
 graphql	Also parses your GraphQL queries
 ```
+* 看到一篇不错的文章（关于react+apollo+graphql的）https://segmentfault.com/a/1190000019443585
 
 ## 安装项目依赖
 
