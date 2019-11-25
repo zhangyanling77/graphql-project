@@ -20,7 +20,7 @@ function ProductLDetail(props: Props){
         <ul className='list-group'>
           {
             product.category!.products!.map((item: Product) => (
-              <li className="list-group-item">{item.name}</li>
+              <li key={item.id} className="list-group-item">{item.name}</li>
             ))
           }
         </ul>
