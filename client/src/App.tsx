@@ -24,7 +24,11 @@ function App() {
       <nav className="navbar navbar-inverse navbar-static-top">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">首页</a>
+            {/* <a className="navbar-brand" href="#">首页</a> */}
+            <a href="#" className="navbar-brand">
+              <img alt="header" style={{width: 24, height: 24}} 
+              src="https://mirror-gold-cdn.xitu.io/168e08be61400b23518?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1"></img>
+            </a>
           </div>
         </div>
       </nav>
