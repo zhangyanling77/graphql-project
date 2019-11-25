@@ -42,7 +42,7 @@ function App() {
         <div className='col-md-6'>
           <div className="panel panel-default">
             <div className="panel-heading">
-              <b>产品详情</b>
+              <p><b>产品详情</b></p>
             </div>
             <div className="panel-body">
               <ProductDetail product={product} />
