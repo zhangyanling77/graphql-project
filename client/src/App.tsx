@@ -16,11 +16,18 @@ function App() {
   if(loading){
     return <p>加载中...</p>
   }
-  console.log(data) // getCategories,getProducts两个list
+  // console.log(data) // getCategories,getProducts两个list
   const { getCategories, getProducts } = data
 
   return (
     <div className='container'>
+      <nav className="navbar navbar-inverse navbar-static-top">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <a className="navbar-brand" href="#">首页</a>
+          </div>
+        </div>
+      </nav>
       <div className='row'>
         <div className='col-md-6'>
           <div className="panel panel-default">
