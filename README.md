@@ -65,7 +65,7 @@ yarn add apollo-boost @apollo/react-hooks graphql
 node server.js
 ```
 访问 http://localhost:4000/graphql 可以看到graphiql可视化操作界面
-graphiql：一个交互式的运行于浏览器中的 GraphQL IDE
+（graphiql：一个交互式的运行于浏览器中的 GraphQL IDE）
 
 * 创建schema.js
 ```javascript
