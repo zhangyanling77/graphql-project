@@ -19,6 +19,8 @@ function AddProduct(props: Props){
         query: GET_PRODUCTS
       }]
     })
+    // 清空表单的值
+    setProduct({name: '', categoryId: ''})
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -32,7 +34,7 @@ function AddProduct(props: Props){
       <div className="form-group">
         <label htmlFor="">产品分类</label>
         <select 
-          value={product.name}
+          value={product.categoryId}
           onChange={event => setProduct({...product, categoryId: event.target.value})}
           className='form-control'>
           <option value="">请选择分类</option>
