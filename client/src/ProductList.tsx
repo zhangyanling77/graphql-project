@@ -15,6 +15,7 @@ function ProductList(props: Props){
         <tr>
           <td>名称</td>
           <td>分类</td>
+          <td>操作</td>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,7 @@ function ProductList(props: Props){
             <tr key={item.id} onClick={() => props.setProduct(item)}>
               <td>{item.name}</td>
               <td>{item.category!.name}</td>
+              <td><a href="#">修改</a> | <a href="#" style={{color: 'red'}}>删除</a></td>
             </tr>
           ))
         }
