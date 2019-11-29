@@ -11,6 +11,7 @@ react hooks + ts + apollo-boost + @apollo/react-hooks + graphql
 ```
 ```javascript
 模块名	含义
+
 https://www.apollographql.com/docs/react/get-started/
 
 apollo-boost	Package containing everything you need to set up Apollo Client
@@ -33,6 +34,7 @@ npx create-react-app client --typescript
 cd client
 yarn add apollo-boost @apollo/react-hooks graphql
 ```
+注意：如果你需要使用组件的方式来查询和更新model，那么你可以安装 react-apollo
 
 ## Server端开发
 * 创建server.js
@@ -265,3 +267,5 @@ ReactDOM.render(
 )
 
 ```
+
+## 其他模块
