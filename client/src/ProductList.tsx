@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { Product } from './types'
 
 interface Props {
@@ -7,7 +7,25 @@ interface Props {
 }
 // 产品列表
 function ProductList(props: Props){
-  if(!props.products) return <p>暂无数据</p>
+  let pageSize = 10;
+  let [current, setCurrent] = useState<number>(0)
+  let productsList = props.products.slice()
+  let [currentList, setCurrentList] = useState<Array<Product>>(productsList.slice(current, pageSize))
+  let paginationItems = [];
+  let len = Math.ceil(props.products.length / pageSize)
+  for(let i = 0; i < len; i++){
+    paginationItems.push(i)
+  }
+
+  function changePage (item:number) {
+    setCurrent(item)
+    // 分页更换数据
+    let start = item*pageSize >= 0 ? item*pageSize : 0;
+    let end = start + pageSize
+    let newTemp = productsList.slice(start, end)
+    setCurrentList(newTemp)
+    
+  }
   return (
     <>
       <table className="table table-striped">
@@ -31,13 +49,21 @@ function ProductList(props: Props){
           }
         </tbody>
       </table>
-     <ul className="pagination">
+      <ul className="pagination">
         <li className="page-item disabled">
           <a className="page-link" href="#" aria-disabled="true">Previous</a>
         </li>
-        <li className="page-item"><a className="page-link" href="#">1</a></li>
-        <li className="page-item"><a className="page-link" href="#">2</a></li>
-        <li className="page-item"><a className="page-link" href="#">3</a></li>
+        {
+          paginationItems.map((item: number) => (
+            <li key={item} 
+              className={item===current?"page-item active":"page-item"}
+            >
+              <a className="page-link" href="#" 
+                onClick={() => changePage(item)}
+              >{item+1}</a>
+            </li>
+          ))
+        }
         <li className="page-item">
           <a className="page-link" href="#">Next</a>
         </li>
