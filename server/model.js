@@ -3,21 +3,17 @@ let ObjectId = mongoose.Schema.Types.ObjectId
 
 const Schema = mongoose.Schema
 
-const conn = mongoose.createConnection('mongodb://localhost/graphql')
+const conn = mongoose.createConnection('mongodb://localhost/graphql',{ useNewUrlParser: true, useUnifiedTopology: true })
 
-conn.on('open', () => {
-  console.log('数据库连接成功！')
-})
+conn.on('open', () => console.log('数据库连接成功！'))
 
-conn.on('error', (error) => {
-  console.log(error)
-})
+conn.on('error', (error) => console.log(error))
 
 // 用于定义表结构
 const CategorySchema = new Schema({
   name: String
 })
-// 增删改查
+// 定义model
 const CategoryModel = conn.model('Category', CategorySchema)
 
 const ProductSchema = new Schema({
