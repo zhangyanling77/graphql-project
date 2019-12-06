@@ -1,6 +1,7 @@
-### 启动项目
+### 安装依赖并启动项目
 
 ```bash
+yarn install
 yarn start
 ```
 
