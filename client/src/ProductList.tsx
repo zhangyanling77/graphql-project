@@ -9,7 +9,7 @@ interface Props {
 function ProductList(props: Props){
   let pageSize = 10;
   let [current, setCurrent] = useState<number>(0)
-  let productsList = props.products.slice()
+  let productsList = props.products
   let [currentList, setCurrentList] = useState<Array<Product>>(productsList.slice(current, pageSize))
   let paginationItems = [];
   let len = Math.ceil(props.products.length / pageSize)
@@ -57,9 +57,9 @@ function ProductList(props: Props){
           paginationItems.map((item: number) => (
             <li key={item} 
               className={item===current?"page-item active":"page-item"}
+              onClick={() => changePage(item)}
             >
               <a className="page-link" href="#" 
-                onClick={() => changePage(item)}
               >{item+1}</a>
             </li>
           ))
