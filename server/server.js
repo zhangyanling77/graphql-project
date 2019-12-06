@@ -9,6 +9,8 @@ const myGraphQLSchema = require('./schema')
 const app = new Koa()
 const router = new Router()
 
+app.use(logger())
+
 app.use(cors({
   origin: 'http://localhost:3000', // 来源
   allowMethods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'] // 允许的方法名
