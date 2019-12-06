@@ -27,7 +27,7 @@ server:
 mkdir server
 cd server
 npm init -y
-yarn add koa koa-router koa2-cors graphql koa-graphql koa-mount mongoose
+yarn add koa koa-router koa2-cors graphql koa-graphql koa-mount mongoose koa-logger
 
 client:
 npx create-react-app client --typescript
@@ -40,31 +40,44 @@ yarn add apollo-boost @apollo/react-hooks graphql
 * 创建server.js
 ```javascript
   const Koa = require('koa')
-  const mount = require('koa-mount')
+  // const mount = require('koa-mount')
   const graphqlHTTP = require('koa-graphql')
+  const Router = require('koa-router')
   const cors = require('koa2-cors') // 解决跨域
-  const myGraphQLSchema = require('./schema.js')
+  const logger = require('koa-logger')
+  const myGraphQLSchema = require('./schema')
 
   const app = new Koa()
+  const router = new Router()
+
+  app.use(logger())
 
   app.use(cors({
     origin: 'http://localhost:3000', // 来源
     allowMethods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'] // 允许的方法名
   }))
 
-  app.use(mount('/graphql', graphqlHTTP({
+  // app.use(mount('/graphql', graphqlHTTP({
+  //   schema: myGraphQLSchema,
+  //   graphiql: true // 开启graphiql可视化操作ide
+  // })))
+
+  router.all('/graphql', graphqlHTTP({
     schema: myGraphQLSchema,
-    graphiql: true // 开启graphiql可视化操作ide
-  })))
+    graphiql: true
+  }))
+
+  app.use(router.routes()).use(router.allowedMethods())
 
 
   app.listen(4000, () => {
     console.log('server started on 4000')
   })
+
 ```
 * 启动服务端
 ```bash
-node server.js
+nodemon server.js
 ```
 访问 http://localhost:4000/graphql 可以看到graphiql可视化操作界面
 （graphiql：一个交互式的运行于浏览器中的 GraphQL IDE）
@@ -206,15 +219,11 @@ let mongoose = require('mongoose')
 let ObjectId = mongoose.Schema.Types.ObjectId
 
 const Schema = mongoose.Schema
-const conn = mongoose.createConnection('mongodb://localhost/graphql')
+const conn = mongoose.createConnection('mongodb://localhost/graphql',{ useNewUrlParser: true, useUnifiedTopology: true })
 
-conn.on('open', () => {
-  console.log('数据库连接成功！')
-})
+conn.on('open', () => console.log('数据库连接成功！'))
 
-conn.on('error', (error) => {
-  console.log(error)
-})
+conn.on('error', (error) => console.log(error))
 
 // 用于定义表结构
 const CategorySchema = new Schema({
