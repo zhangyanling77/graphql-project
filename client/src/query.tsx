@@ -56,3 +56,27 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+
+// 修改产品
+// export const UPDATE_PRODUCT = gql`
+//   mutation($Id: String!, $name: String, $categoryId: String){
+//     updateProduct(id: $Id, name: $name, category: $categoryId){
+//       id
+//       name
+//       category{
+//         id
+//         name
+//       }
+//     }
+//   }
+// `;
+
+// 删除产品
+export const DELETE_PRODUCT = gql`
+  mutation($name: String!){
+    deleteProduct(name: $name){
+      id,
+      name
+    }
+  }
+`;
