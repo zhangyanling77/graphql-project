@@ -50,9 +50,9 @@ function ProductList(props: Props){
         </tbody>
       </table>
       <ul className="pagination">
-        <li className="page-item disabled">
+<!--         <li className="page-item disabled">
           <a className="page-link" href="#" aria-disabled="true">Previous</a>
-        </li>
+        </li> -->
         {
           paginationItems.map((item: number) => (
             <li key={item} 
@@ -64,9 +64,9 @@ function ProductList(props: Props){
             </li>
           ))
         }
-        <li className="page-item">
+<!--         <li className="page-item">
           <a className="page-link" href="#">Next</a>
-        </li>
+        </li> -->
       </ul>
     </>
   )
