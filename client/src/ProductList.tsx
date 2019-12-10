@@ -29,7 +29,7 @@ function ProductList(props: Props){
   return (
     <>
       <table className="table table-striped">
-        <caption className="text-center">产品列表</caption>
+        <caption className="text-center"><b>产品列表</b></caption>
         <thead>
           <tr>
             <td>名称</td>
@@ -43,16 +43,13 @@ function ProductList(props: Props){
               <tr key={item.id} onClick={() => props.setProduct(item)}>
                 <td>{item.name}</td>
                 <td>{item.category!.name}</td>
-                <td><a href="#">修改</a> | <a href="#" style={{color: 'red'}}>删除</a></td>
+                <td><a href="#" style={{color: 'red'}}>删除</a></td>
               </tr>
             ))
           }
         </tbody>
       </table>
       <ul className="pagination">
-<!--         <li className="page-item disabled">
-          <a className="page-link" href="#" aria-disabled="true">Previous</a>
-        </li> -->
         {
           paginationItems.map((item: number) => (
             <li key={item} 
@@ -64,9 +61,6 @@ function ProductList(props: Props){
             </li>
           ))
         }
-<!--         <li className="page-item">
-          <a className="page-link" href="#">Next</a>
-        </li> -->
       </ul>
     </>
   )
