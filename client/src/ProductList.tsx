@@ -1,5 +1,7 @@
 import React, { useState }  from 'react';
-import { Product } from './types'
+import { Product } from './types';
+import { DELETE_PRODUCT, GET_PRODUCTS } from './query';
+import { useMutation } from '@apollo/react-hooks';
 
 interface Props {
   products: Array<Product>;
@@ -26,6 +28,21 @@ function ProductList(props: Props){
     setCurrentList(newTemp)
     
   }
+  
+   // 删除商品 
+  let [deleteProduct] = useMutation(DELETE_PRODUCT)
+  const deleteItem = (item: Product) => {
+    // console.log(item)
+    let name = item.name
+    deleteProduct({
+      variables: {
+        name: name
+      },
+      refetchQueries: [{
+        query: GET_PRODUCTS
+      }]
+    })
+  }
   return (
     <>
       <table className="table table-striped">
@@ -43,7 +60,7 @@ function ProductList(props: Props){
               <tr key={item.id} onClick={() => props.setProduct(item)}>
                 <td>{item.name}</td>
                 <td>{item.category!.name}</td>
-                <td><a href="#" style={{color: 'red'}}>删除</a></td>
+                <td><a href="#" style={{color: 'red'}} onClick={() => deleteItem(item)}>删除</a></td>
               </tr>
             ))
           }
