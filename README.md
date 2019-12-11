@@ -278,3 +278,18 @@ ReactDOM.render(
 ```
 
 ## 其他模块
+未完待续...
+
+## 构建部署
+```bash
+yarn build
+or
+npm run build
+```
+* 得到build目录，即为打包好的文件
+* 本地验证：
+```bash
+yarn global add serve
+serve -s build
+```
+* 访问 http://localhost:5000 可验证打包内容是否正确
