@@ -12,7 +12,8 @@ const app = new Koa()
 app.use(logger())
 
 app.use(cors({
-  origin: 'http://localhost:3000', // 来源
+//   origin: 'http://localhost:3000', // 来源
+  origin: '*', // 允许所有来源
   allowMethods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'] // 允许的方法名
 }))
 
