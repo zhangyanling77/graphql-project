@@ -74,8 +74,8 @@ export const ADD_PRODUCT = gql`
 
 // 删除产品
 export const DELETE_PRODUCT = gql`
-  mutation($name: String!){
-    deleteProduct(name: $name){
+  mutation($id: String!){
+    deleteProduct(id: $id){
       id,
       name
     }
