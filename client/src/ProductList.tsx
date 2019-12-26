@@ -33,10 +33,9 @@ function ProductList(props: Props){
   let [deleteProduct] = useMutation(DELETE_PRODUCT)
   const deleteItem = (item: Product) => {
     // console.log(item)
-    let name = item.name
     deleteProduct({
       variables: {
-        name: name
+        id: item.id
       },
       refetchQueries: [{
         query: GET_PRODUCTS
